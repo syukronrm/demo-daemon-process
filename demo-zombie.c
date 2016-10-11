@@ -5,22 +5,13 @@
 
 int main(void)
 {
-	// close(STDIN_FILENO);
-	// close(STDOUT_FILENO);
-	// close(STDERR_FILENO);
-
 	pid_t pids[10];
 	int i;
-	pid_t oldSid, newSid;
-
-	oldSid = getsid(getpid());
-	printf("All child session id = %d\n", (int)oldSid);
 
 	for (i = 9; i >= 0; --i) {
 		pids[i] = fork();
 		if (pids[i] == 0) {
 			sleep(i+1);
-			newSid = setsid();
 			printf("Child %d > new session id = %d\n", i, (int)newSid);
 			if (i == 9 )
 				sleep(100);
