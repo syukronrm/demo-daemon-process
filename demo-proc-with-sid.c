@@ -6,7 +6,9 @@
 int main()
 {
 	pid_t pid = fork();
-
+	pid_t p_sid = getsid(getpid());	// parent sid
+	printf("parent sid = %n\n", (int)p_sid);
+	
 	if (pid < 0)
 	{
 		printf("Create new process failed\n");
@@ -15,7 +17,7 @@ int main()
 	else if (pid == 0)
 	{
 		pid_t pid = getpid();
-		pid_t sid = setsid();
+		pid_t c_sid = setsid();
 		printf("This is child process with Process ID = %d and Session ID = %d\n",
 			(int)pid, (int)sid);
 		_exit(EXIT_SUCCESS);
