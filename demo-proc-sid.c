@@ -14,8 +14,8 @@ int main()
 	}
 	else if (pid == 0)
 	{
-    pid_t pid = getpid();
-    pid_t sid = setsid();
+		pid_t pid = getpid();
+		pid_t sid = setsid();
 		printf("This is child process with Process ID = %d and Session ID = %d\n",
 			(int)pid, (int)sid);
 		_exit(EXIT_SUCCESS);
