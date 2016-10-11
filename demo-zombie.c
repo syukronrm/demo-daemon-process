@@ -12,10 +12,10 @@ int main(void)
 		pids[i] = fork();
 		if (pids[i] == 0) {
 			sleep(i+1);
-			printf("Child %d > new session id = %d\n", i, (int)newSid);
+			printf("Child %d with Process ID : %d\n", i, (int)getpid());
 			if (i == 9 )
 				sleep(100);
-			printf("Child %d = %d\n", i, (int)getpid());
+			printf("Child %d wake up\n", i);
 			_exit(0);
 		}
 	}
